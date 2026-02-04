@@ -1,0 +1,41 @@
+CREATE TABLE users (
+id int primary key auto_increment not null,
+name varchar(50) not null,
+email varchar(50) not null
+)
+;
+create table movies (
+id int primary key auto_increment not null,
+title varchar(50) not null,
+rating double not null,
+genre varchar(50) not null
+)
+;
+create table favorites (
+id int primary key auto_increment not null,
+userid int,
+movieid int,
+foreign key (userid) references users(id),
+foreign key (movieid) references movies(id)
+)
+;
+insert into users (name, email) values
+('Mie', 'Mie@email.com'),
+ ('Bob', 'Bob@email.com'),
+ ('Lars', 'Lars@email.com'),
+ ('Hans', 'Hans@email.com'),
+ ('Mikkeline', 'Mikkeline@email.com')
+ ;
+ insert into movies(title, rating, genre) values
+ ('Forest Gump', 9.1, 'Komedie'),
+ ('Alien', 8.6, 'Gyser'),
+ ('The Dark Knight', 9.2, 'Action'),
+ ('Titanic', 8.2, 'Drama'),
+ ('Iron Lung', 7.5, 'Gyser'),
+ ('Spiderman', 8.5, 'Action'),
+ ('Avatar', 7.8, 'Sci-fi'),
+ ('LOTR FellowShip Of The Ring', 9.3, 'Eventyr'),
+ ('Zootopia 2', 7.1, 'Animation'),
+ ('La La Land', 8.3, 'Musical')
+ ;
+
