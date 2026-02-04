@@ -61,7 +61,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.example.streamingplatformfeedback/com.example.streamingplatformfeedback.HelloApplication
+                                com.example.streamingplatformfeedback/com.example.streamingplatformfeedback.MainApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

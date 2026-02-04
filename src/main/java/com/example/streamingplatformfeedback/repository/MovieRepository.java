@@ -1,7 +1,6 @@
 package com.example.streamingplatformfeedback.repository;
 
 import com.example.streamingplatformfeedback.infrastructure.DbConfig;
-import com.example.streamingplatformfeedback.model.Favorite;
 import com.example.streamingplatformfeedback.model.Movie;
 
 import java.sql.Connection;
@@ -11,17 +10,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FavoriteRepository {
+public class MovieRepository {
     private final DbConfig db;
 
-    public FavoriteRepository(DbConfig db) {
+    public MovieRepository(DbConfig db) {
         this.db = db;
     }
-
-    public List<Favorite> findAll() {
+    public List<Movie> findAll() {
         String sql = "Select id, title, rating, genre from users";
 
-        List<Favorite> result = new ArrayList<>();
+        List<Movie> result = new ArrayList<>();
 
         try(Connection c = db.getConnection();
             PreparedStatement ps = c.prepareStatement(sql);
@@ -37,12 +35,12 @@ public class FavoriteRepository {
         }
     }
 
-    private Favorite mapRow(ResultSet rs) throws SQLException {
-        return new Favorite(
+    private Movie mapRow(ResultSet rs) throws SQLException {
+        return new Movie(
                 rs.getInt("id"),
-                rs.getInt("userid"),
-                rs.getInt("movieid")
+                rs.getString("title"),
+                rs.getDouble("rating"),
+                rs.getString("genre")
         );
     }
-
 }
