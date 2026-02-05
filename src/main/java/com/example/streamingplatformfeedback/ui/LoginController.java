@@ -17,14 +17,12 @@ import javafx.scene.control.TextField;
 
 public class LoginController {
 
-    @FXML private Label welcomeLabel;
     @FXML private TextField usernameField;
     @FXML private TextField emailField;
     @FXML private Button loginButton;
 
-    private UserService userService;
-    private FavoriteService favService;
-    private MovieService movieService;
+    @FXML private TextField writeUsername;
+    @FXML private TextField writePassword;
 
 
     @FXML public void onLoginButtonClick(){
@@ -39,6 +37,10 @@ public class LoginController {
         }
     }
 
+
+    private UserService userService;
+    private FavoriteService favService;
+    private MovieService movieService;
 
     public void initialize() {
         DbConfig db = new DbConfig();

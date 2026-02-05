@@ -6,6 +6,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 
 public class MainApplication extends Application {
 
@@ -19,7 +21,7 @@ public class MainApplication extends Application {
 //            throw new IllegalStateException("FXML not found in resources");
 //        }
 
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("login-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("/login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
 
         stage.setTitle("StreamingPlatform!");
@@ -28,8 +30,21 @@ public class MainApplication extends Application {
     }
 
     public static void main(String[] args) {
+//        testConnection();
         launch(args);
     }
+
+//    public static <DB> void testConnection() {
+//        DB db = new DB();
+//        try (Connection c = db.get()) {
+//            DatabaseMetaData md = c.getMetaData();
+//            System.out.println("✅ Forbindelse OK: " + md.getURL());
+//            System.out.println("   Driver: " + md.getDriverName() + " - " + md.getDriverVersion());
+//        } catch (Exception e) {
+//            System.out.println("❌ Forbindelse FEJL: " + e.getMessage());
+//            System.out.println("Tip: Tjek URL/USER/PASS og at MySQL kører.");
+//        }
+//    }
 }
 
 
