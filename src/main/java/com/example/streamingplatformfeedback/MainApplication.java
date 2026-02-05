@@ -1,5 +1,6 @@
 package com.example.streamingplatformfeedback;
 
+import com.example.streamingplatformfeedback.infrastructure.DbConfig;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -30,21 +31,21 @@ public class MainApplication extends Application {
     }
 
     public static void main(String[] args) {
-//        testConnection();
+        testConnection();
         launch(args);
     }
 
-//    public static <DB> void testConnection() {
-//        DB db = new DB();
-//        try (Connection c = db.get()) {
-//            DatabaseMetaData md = c.getMetaData();
-//            System.out.println("✅ Forbindelse OK: " + md.getURL());
-//            System.out.println("   Driver: " + md.getDriverName() + " - " + md.getDriverVersion());
-//        } catch (Exception e) {
-//            System.out.println("❌ Forbindelse FEJL: " + e.getMessage());
-//            System.out.println("Tip: Tjek URL/USER/PASS og at MySQL kører.");
-//        }
-//    }
+    public static <DB> void testConnection() {
+        DbConfig db = new DbConfig();
+        try (Connection c = db.getConnection()) {
+            DatabaseMetaData md = c.getMetaData();
+            System.out.println("✅ Forbindelse OK: " + md.getURL());
+            System.out.println("   Driver: " + md.getDriverName() + " - " + md.getDriverVersion());
+        } catch (Exception e) {
+            System.out.println("❌ Forbindelse FEJL: " + e.getMessage());
+            System.out.println("Tip: Tjek URL/USER/PASS og at MySQL kører.");
+        }
+    }
 }
 
 

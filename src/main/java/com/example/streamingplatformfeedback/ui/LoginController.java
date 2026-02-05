@@ -22,18 +22,18 @@ public class LoginController {
 
 
     @FXML private TextField emailField;
-    @FXML private TextField passwordField;
+
 
 
     @FXML public void onLoginButtonClick(ActionEvent event){
         String email = emailField.getText();
-        String password = passwordField.getText();
 
         try{
             List<User> users = userService.findByEmail(email);
             if(users != null && !users.isEmpty()){
                 User foundUser = users.get(0);
-                SceneSwitch.switchToStreaming(event, foundUser, movieService, favService);
+//                SceneSwitch.switchToStreaming(event, foundUser, movieService, favService);
+                SceneSwitch.switchScene(event,"/streaming-view.fxml");
             }
             else{
                 showAlert("Login Failed", "no user found");
