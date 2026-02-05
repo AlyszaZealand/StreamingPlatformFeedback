@@ -1,15 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
+<AnchorPane prefHeight="600.0" prefWidth="800.0"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.streamingplatformfeedback.ui.StreamingServiceController">
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
-   <padding>
-      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-   </padding>
-   <center>
-      <SplitPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-   </center>
-</BorderPane>
+   <!-- User Info Section at Top -->
+   <VBox layoutX="14.0" layoutY="14.0" spacing="5.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+      <Label fx:id="displayName" text="Name: " style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+      <Label fx:id="displayEmail" text="Email: "/>
+      <Label fx:id="displayId" text="ID: "/>
+   </VBox>
+
+   <!-- Movies Section (Left Side) -->
+   <VBox layoutX="14.0" layoutY="100.0" spacing="10.0"
+         AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="100.0"
+         AnchorPane.bottomAnchor="60.0" prefWidth="380.0">
+
+      <Label text="All Movies" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+      <TableView fx:id="movieTableView" VBox.vgrow="ALWAYS">
+         <columns>
+            <TableColumn fx:id="movieIdColumn" text="ID" prefWidth="50.0" />
+            <TableColumn fx:id="movieTitleColumn" text="Title" prefWidth="150.0" />
+            <TableColumn fx:id="movieGenreColumn" text="Genre" prefWidth="100.0" />
+            <TableColumn fx:id="movieRatingColumn" text="Rating" prefWidth="75.0" />
+         </columns>
+      </TableView>
+
+      <Button fx:id="addFavoriteButton" text="Add to Favorites" onAction="#handleAddFavorite" maxWidth="Infinity"/>
+   </VBox>
+
+   <!-- Favorites Section (Right Side) -->
+   <VBox layoutX="410.0" layoutY="100.0" spacing="10.0"
+         AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="100.0"
+         AnchorPane.bottomAnchor="60.0" prefWidth="380.0">
+
+      <Label text="My Favorites" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+
+      <TableView fx:id="favoriteTableView" VBox.vgrow="ALWAYS">
+         <columns>
+            <TableColumn fx:id="favMovieIdColumn" text="Movie ID" prefWidth="75.0" />
+            <TableColumn fx:id="favMovieTitleColumn" text="Title" prefWidth="300.0" />
+         </columns>
+      </TableView>
+
+      <Button fx:id="removeFavoriteButton" text="Remove from Favorites" onAction="#handleRemoveFavorite" maxWidth="Infinity"/>
+   </VBox>
+
+   <!-- Logout Button at Bottom -->
+   <Button fx:id="returnButton" text="Logout" layoutX="350.0"
+           AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="350.0"/>
+
+</AnchorPane>

@@ -16,6 +16,10 @@ public class FavoriteService {
         return favoriteRepo.findAll();
     }
 
+    public List<Favorite> getFavoritesByUserId(Integer userId) {
+        return favoriteRepo.findByUserId(userId);
+    }
+
     public List<Favorite> addToFavorites(int userId, int movieId){
       return favoriteRepo.addToFavorites(userId, movieId);
     }
