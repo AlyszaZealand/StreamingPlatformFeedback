@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class StreamingServiceController {
 
@@ -28,12 +29,12 @@ public class StreamingServiceController {
 
     @FXML private TableView favoriteTableView;
 //    @FXML private TableColumn<Favorite, Movie, User> favoriteTitleColumn;
-    @FXML private TableColumn favoriteColumn;
-    @FXML private TableColumn favoriteRatingColumn;
-    @FXML private TableColumn favoriteGenreColumn;
+    @FXML private TableColumn<Favorite, String> favoriteTitleColumn;
+    @FXML private TableColumn<Favorite, Double> favoriteRatingColumn;
+    @FXML private TableColumn<Favorite, String> favoriteGenreColumn;
 
     @FXML private TableView movieTableView;
-    @FXML private TableColumn movieTitleColumn;
+    @FXML private TableColumn<> movieTitleColumn;
     @FXML private TableColumn movieRatingColumn;
     @FXML private TableColumn movieGenreColumn;
 
@@ -50,6 +51,7 @@ public class StreamingServiceController {
     @FXML
     public void initialize(){
 
+        setupMovieTable();
     }
 
     @FXML
@@ -63,6 +65,15 @@ public class StreamingServiceController {
     }
 
     private void setupMovieTable(){
+        movieGenreColumn.setCellValueFactory(new PropertyValueFactory<>("Genre"));
+        movieRatingColumn.setCellValueFactory(new PropertyValueFactory<>("Rating"));
+        movieTitleColumn.setCellValueFactory(new PropertyValueFactory<>("Title"));
+    }
+
+    private void setupFavoriteTable(){
+        favoriteGenreColumn.setCellValueFactory(new PropertyValueFactory<>("Genre"));
+        favoriteRatingColumn.setCellValueFactory(new PropertyValueFactory<>("Rating"));
+        favoriteColumn.setCellValueFactory(new PropertyValueFactory<>("Title"));
     }
 
     @FXML
