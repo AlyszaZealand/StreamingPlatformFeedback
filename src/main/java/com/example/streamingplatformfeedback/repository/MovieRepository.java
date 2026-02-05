@@ -17,7 +17,7 @@ public class MovieRepository {
         this.db = db;
     }
     public List<Movie> findAll() {
-        String sql = "Select id, title, rating, genre from users";
+        String sql = "Select id, title, rating, genre from movies";
 
         List<Movie> result = new ArrayList<>();
 

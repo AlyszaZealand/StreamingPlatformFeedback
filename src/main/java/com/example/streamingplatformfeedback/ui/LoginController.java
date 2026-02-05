@@ -9,18 +9,35 @@ import com.example.streamingplatformfeedback.service.FavoriteService;
 import com.example.streamingplatformfeedback.service.MovieService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import com.example.streamingplatformfeedback.service.UserService;
+import javafx.scene.control.TextField;
 
 public class LoginController {
 
-    @FXML private Label welcomeText;
-
+    @FXML private Label welcomeLabel;
+    @FXML private TextField usernameField;
+    @FXML private TextField emailField;
+    @FXML private Button loginButton;
 
     private UserService userService;
     private FavoriteService favService;
     private MovieService movieService;
+
+
+    @FXML public void onLoginButtonClick(){
+        String email = emailField.getText();
+
+        try{
+            if(userService.findByEmail(email) == null){
+
+            }
+        } catch(Exception e){
+            showAlert("Login Failed", "An error occurred during login: " + e.getMessage());
+        }
+    }
 
 
     public void initialize() {

@@ -16,4 +16,8 @@ public class FavoriteService {
         return favoriteRepo.findAll();
     }
 
+    public List<Favorite> addToFavorites(Favorite favorite) {}
+
+
+
 }

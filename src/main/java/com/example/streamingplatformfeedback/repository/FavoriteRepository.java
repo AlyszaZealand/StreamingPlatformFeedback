@@ -19,7 +19,7 @@ public class FavoriteRepository {
     }
 
     public List<Favorite> findAll() {
-        String sql = "Select id, title, rating, genre from users";
+        String sql = "Select id, title, rating, genre from favorites";
 
         List<Favorite> result = new ArrayList<>();
 
@@ -34,6 +34,37 @@ public class FavoriteRepository {
 
         } catch (Exception e){
             throw new DataAccessException("Fejl ved findAll()", e);
+        }
+    }
+
+    public List<Favorite> addToFavorites(int userId, int movieId){
+        String sql = "INSERT INTO favorites (userid, movieid) VALUES (?, ?)";
+        List<Favorite> result = new ArrayList<>();
+        try(Connection c = db.getConnection();
+            PreparedStatement ps = c.prepareStatement(sql)){
+
+            ps.setInt(1, userId);
+            ps.setInt(2, movieId);
+
+            ps.executeUpdate();
+            return result;
+
+        } catch (Exception e){
+            throw new DataAccessException("Fejl ved addToFavorites()", e);
+        }
+    }
+
+    public List<Favorite> removeFromFavorites(int userId, int movieId){
+        String sql = "DELETE FROM favorites WHERE userid = ? AND movieid = ?";
+        List<Favorite> result = new ArrayList<>();
+        try(Connection c = db.getConnection();
+            PreparedStatement ps = c.prepareStatement(sql)) {
+            ps.setInt(1, userId);
+            ps.setInt(2, movieId);
+            ps.executeUpdate();
+            return result;
+        } catch (Exception e){
+            throw new DataAccessException("Fejl ved removeFromFavorites()", e);
         }
     }
 
